@@ -19,6 +19,32 @@ class LinkedList {
         return this;
     }
 
+    pop() {
+        if (!this.head) return undefined;
+
+        // creating temp and next 
+        // to fetch last item to be (previous before temp)
+        // 
+        let temp = this.head;
+        let pre = this.head;
+
+        while (temp.next) {
+            pre = temp;
+            temp = temp.next;
+        }
+
+        this.tail = pre;
+        this.tail.next = null;
+        this.length--;
+
+        if (!this.length) {
+            this.head = null;
+            this.tail = null;
+        }
+
+        return temp;
+    }
+
     unshift(value) {
 
     }
@@ -40,5 +66,7 @@ const myLinkedList = new LinkedList(4);
 myLinkedList.push(7)
 
 myLinkedList.push(10)
+
+myLinkedList.pop();
 
 console.log(myLinkedList)
